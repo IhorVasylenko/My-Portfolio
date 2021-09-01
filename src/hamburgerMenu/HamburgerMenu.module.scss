@@ -1,0 +1,180 @@
+.container {
+    position: relative;
+    height: 100%;
+
+    .navTgl {
+        display: inline-block;
+        cursor: pointer;
+        position: absolute;
+        z-index: 1000;
+        right: 0;
+        top: 5px;
+        width: 60px;
+        height: 60px;
+        border: none;
+        border-radius: 50%;
+        padding: 0;
+        background: rgba(235, 131, 248, .3);
+        box-shadow: 0 0  15px rgba(235, 131, 248, .9);
+        line-height: 0.6;
+        text-align: center;
+        transition: all 300ms linear;
+
+        & span {
+            display: inline-block;
+            position: relative;
+            height: 4px;
+            width: 24px;
+            border-radius: 1px;
+            background: rgba(225, 225, 225, 1);
+            vertical-align: middle;
+
+            &:before {
+                top: -8px;
+                left: 3px;
+                width: 18px;
+            }
+
+            &:after {
+                top: 8px;
+                left: 3px;
+                width: 18px;
+            }
+
+            &:before, &:after {
+                display: inline-block;
+                position: absolute;
+                content: "";
+                height: 4px;
+                border-radius: 1px;
+                background: rgba(225, 225, 225, 1);
+                transition: all 300ms;
+            }
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover span:after, &:hover span:before {
+            width: 24px;
+            left: 0;
+        }
+    }
+
+    .nav {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -365px;
+        content: "";
+        width: 300px;
+        height: 100vh;
+        background: rgba(0, 0, 0, 1);
+        transition: all 300ms ease-in-out;
+        border-right: 3px solid #fff;
+        visibility: hidden;
+        z-index: 777;
+        overflow-y: auto;
+
+        .menuPositionLi {
+            font-size: 20px;
+            margin: 20px 0;
+            text-align: center;
+            list-style: none;
+            cursor: pointer;
+            padding: 0 20px 5px 20px;
+            position: relative;
+
+            &:first-child {
+                margin-top: 100px;
+            }
+
+            & button {
+                color: #fff;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                text-transform: none;
+                margin: 0;
+                font-family: Poppins, sans-serif;
+                font-size: 22px;
+                font-weight: 500;
+                position: relative;
+            }
+
+            .link {
+                width: 100%;
+
+                &:hover:after {
+                    visibility: visible;
+                    transform: scaleX(1);
+                }
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    height: 2px;
+                    width: 100%;
+                    left: 0;
+                    bottom: 0;
+                    visibility: hidden;
+                    background-color: #eb83f8;
+                    transition: all 300ms ease;
+                    transform: scaleX(0);
+                }
+
+            }
+        }
+
+
+    }
+
+    .active {
+
+        .navTgl {
+            background: transparent;
+            box-shadow: none;
+
+            & span {
+                height: 0;
+            }
+
+            & span:after, & span:before {
+                top: 0;
+                left: 0;
+                width: 24px;
+            }
+
+            & span:after {
+                background: rgba(235, 131, 248, 1);
+                transform: rotate(-45deg);
+            }
+
+            & span:before {
+                background: rgba(235, 131, 248, 1);
+                transform: rotate(45deg);
+            }
+        }
+
+        .nav {
+            display: block;
+            position: absolute;
+            visibility: visible;
+            left: -65px;
+        }
+
+        & ::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+

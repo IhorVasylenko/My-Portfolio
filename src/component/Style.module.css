@@ -1,0 +1,38 @@
+.nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 1000;
+    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.15);
+}
+
+.navLogo {
+    height: 60px;
+    width: 60px;
+}
+
+.navLogo:hover {
+    cursor: pointer;
+}
+
+.nav .navContent {
+    max-width: 900px;
+    padding: 0 3rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.navItems {
+    display: inline;
+    margin-left: 2rem;
+    color: #333;
+}
+
+.navItems:hover {
+    color: black;
+    cursor: pointer;
+}

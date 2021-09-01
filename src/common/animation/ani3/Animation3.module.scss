@@ -1,0 +1,88 @@
+$anime-time: 8s;
+$box-size: 200px;
+$clip-distance: .05;
+$clip-size: $box-size * (1 + $clip-distance * 2);
+$path-width: 2px;
+$main-color: #fff;
+
+%full-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.container {
+  position: relative;
+
+  .bb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 40px 0 0 0;
+
+    @extend %full-fill;
+    width: 210px;
+    height: 100px;
+    color: $main-color;
+
+    &:active {
+      color: rgba(#eb83f8, 1);
+    }
+
+    .text {
+      background-color: transparent;
+      width: 180px;
+      height: 50px;
+      text-transform: uppercase;
+      line-height: 50px;
+      font-size: 15px;
+      letter-spacing: 4px;
+      cursor: pointer;
+    }
+
+    &::before,
+    &::after {
+      box-sizing: border-box;
+      @extend %full-fill;
+      content: '';
+      z-index: -1;
+      margin: -5px;
+      box-shadow: inset 0 0 0 $path-width;
+      animation: clipMe $anime-time linear infinite;
+    }
+
+    &::before {
+      animation-delay: $anime-time * -.5;
+    }
+
+    &:hover {
+      &::after,
+      &::before {
+        background-color: rgba(#eb83f8, .3);
+      }
+    }
+
+    &:active {
+      background-color: rgba(red, .1);
+    }
+  }
+}
+
+
+@keyframes clipMe {
+  0%, 100% {
+    clip: rect(0px, $clip-size, $path-width, 0px);
+  }
+  25% {
+    clip: rect(0px, $path-width, $clip-size/2, 0px);
+  }
+  50% {
+    clip: rect($clip-size/2 - $path-width, $clip-size, $clip-size/2, 0px);
+  }
+  75% {
+    clip: rect(0px, $clip-size, $clip-size/2, $clip-size - $path-width);
+  }
+}
