@@ -1,115 +1,124 @@
-import React from "react";
-import { Formik, Form, Field } from "formik";
+import React, {useState} from 'react';
 import style from './Feedback.module.scss'
-import {Animation3} from "../animation/ani3/Animation3";
+import {useFormik} from 'formik';
+import * as Yup from 'yup';
+import * as emailjs from 'emailjs-com';
+import {AnimationForButton} from "../animation/animationForButton/AnimationForButton";
 
 
-export  const Feedback = () => {
-    // Messages
-    const required = "This field is required";
-    const maxLength = "Your input exceed maximum length";
+export const Feedback: React.FC = () => {
 
-    // Error Component
-    const errorMessage = (error: any) => {
-        return <div className="invalid-feedback">{error}</div>;
-    };
+    const formik = useFormik({
 
-    const validateUserName = (value: any) => {
-        let error;
-        if (!value) {
-            error = required;
-        } else if (value.length > 12) {
-            error = maxLength;
-        }
-        return error;
-    };
-
-    const validateEmail = (value: any) => {
-        let error;
-        if (!value) {
-            error = required;
-        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-            error = "Invalid email address";
-        }
-        return error;
-    };
-
-    const validateMobileNumber = (value: any) => {
-        let error;
-        if (value.length > 12) {
-            error = maxLength;
-        }
-        return error;
-    };
+        initialValues: {
+            from_name: '',
+            to_name: 'theone116355@gmail.com',
+            phone: '',
+            reply_to: '',
+            message: ''
+        },
+        validationSchema: Yup.object({
+            from_name: Yup.string()
+                .required('* Name field is required'),
+            phone: Yup.number()
+                .required('* Phone field is required'),
+            reply_to: Yup.string().email('Invalid email address')
+                .required('* Email field is required'),
+            message: Yup.string().required('* Message field is required')
+        }),
+        onSubmit: (values) => {
+            try {
+                emailjs.send('my_gmail',
+                    'template_4w72xpz',
+                    values,
+                    'user_thYeE0wo9OLmec6U9vdht')
+                    .then(() => {
+                        formik.setSubmitting(false);
+                        formik.resetForm();
+                    });
+            } catch {
+                formik.setSubmitting(false);
+            }
+        },
+    });
 
     return (
-
-            <Formik
-                initialValues={{username: "", mobileNumber: "", email: "",}}
-                onSubmit={(values, { setSubmitting }) => {
-                    setTimeout(() => {
-                        console.log(JSON.stringify(values, null, 2));
-                        setSubmitting(false);
-                    }, 400);
-                }}
-            >
-                {({ errors, touched}) => (
-                    <div className={style.container}>
-                        <div className={style.colSm12}>
-                            <Form>
-                                <div className={style.formGroup}>
-                                    <Field
-                                        className={style.formControl}
-                                        type="text"
-                                        placeholder="Name"
-                                        name="username"
-                                        validate={validateUserName}
-                                    />
-                                    <span className={style.error}>
-                                        {errors.username && touched.username && errorMessage(errors.username)}
-                                    </span>
-                                </div>
-                                <div className={style.formGroup}>
-                                    <Field
-                                        type="email"
-                                        name="email"
-                                        className={style.formControl}
-                                        placeholder="Email"
-                                        validate={validateEmail}
-                                    />
-                                    <span>
-                                        {errors.email && touched.email && errorMessage(errors.email)}
-                                    </span>
-                                </div>
-                                <div className={style.formGroup}>
-                                    <Field
-                                        className={style.formControl}
-                                        type="tel"
-                                        placeholder="Phone"
-                                        name="mobileNumber"
-                                        validate={validateMobileNumber}
-                                    />
-                                    <span>
-                                    {errors.mobileNumber && touched.mobileNumber && errorMessage(errors.mobileNumber)}
-                                    </span>
-                                </div>
-                                <div className={style.formGroup}>
-                                    <Field
-                                        component="textarea"
-                                        className={style.formControl}
-                                        name="About"
-                                        placeholder="Message"
-                                    />
-                                </div>
-                                <div className={`${style.formGroup} ${style.button}`}>
-                                    <Animation3 value={'Send Message'}/>
-                                </div>
-                            </Form>
-                        </div>
-                    </div>
-                )}
-            </Formik>
-
+        <form className={style.container} onSubmit={formik.handleSubmit}>
+            <div className={style.colSm12}>
+                <div className={style.formGroup}>
+                    <label htmlFor="from_name"/>
+                    <input
+                        className={style.formControl}
+                        id="from_name"
+                        name="from_name"
+                        type="text"
+                        autoComplete="off"
+                        placeholder="YOUR NAME"
+                        onChange={formik.handleChange}
+                        value={formik.values.from_name}
+                    />
+                    <span className={style.error}>
+                        {formik.touched.from_name && formik.errors.from_name && formik.errors.from_name}
+                    </span>
+                </div>
+                <div className={style.formGroup}>
+                    <label htmlFor="phone"/>
+                    <input
+                        className={style.formControl}
+                        id="phone"
+                        name="phone"
+                        type="text"
+                        autoComplete="off"
+                        placeholder="YOUR PHONE"
+                        onChange={formik.handleChange}
+                        value={formik.values.phone}
+                    />
+                    <span className={style.error}>
+                        {formik.touched.phone && formik.errors.phone && formik.errors.phone}
+                    </span>
+                </div>
+                <div className={style.formGroup}>
+                    <label htmlFor="reply_to"/>
+                    <input
+                        className={style.formControl}
+                        id="reply_to"
+                        type="email"
+                        name="reply_to"
+                        placeholder="YOUR EMAIL"
+                        autoComplete="off"
+                        onChange={formik.handleChange}
+                        value={formik.values.reply_to}
+                    />
+                    <span className={style.error}>
+                        {formik.touched.reply_to && formik.errors.reply_to && formik.errors.reply_to}
+                    </span>
+                </div>
+                <div className={style.formGroup}>
+                    <label htmlFor="message"/>
+                    <textarea
+                        className={style.formControl}
+                        id="message"
+                        name="message"
+                        placeholder="YOUR MESSAGE"
+                        autoComplete="off"
+                        onChange={formik.handleChange}
+                        value={formik.values.message}
+                    />
+                    <span className={style.error}>
+                        {formik.touched.message && formik.errors.message && formik.errors.message}
+                    </span>
+                </div>
+                <div className={`${style.formGroup} ${style.button}`}>
+                    <AnimationForButton>
+                        <button disabled={formik.isSubmitting} type="submit" className={style.link}>
+                            Send Message
+                        </button>
+                    </AnimationForButton>
+                </div>
+                <div className="col-12 form-message">
+                    <span id='output' className="output_message text-center text-uppercase"/>
+                </div>
+            </div>
+        </form>
     );
-}
-
+};
