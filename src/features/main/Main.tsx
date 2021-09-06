@@ -42,7 +42,7 @@ export const Main: React.FC<PropsType> = () => {
                     <div className={style.glitch} data-text="Ihor Vasylenko">Ihor Vasylenko</div>
                     <div className={style.text}>Frontend Developer</div>
                     <AnimationForButton >
-                        <Link to='https://raw.githubusercontent.com/IhorVasylenko/My-Portfolio/blob/9dda45994c245ef2c7c4c58f79866a9338ecccec/public/files/Front-End_CV.pdf' target="_blank" download className={style.link}>
+                        <Link to='https://github.com/IhorVasylenko/My-Portfolio/blob/42e0aae0ef1c061463500bd5518eb3304ed3dedc/files/Front-End_CV.pdf' target="_blank" download className={style.link}>
                             Download CV
                         </Link>
                     </AnimationForButton>
