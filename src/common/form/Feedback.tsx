@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import style from './Feedback.module.scss'
 import {useFormik} from 'formik';
 import * as Yup from 'yup';

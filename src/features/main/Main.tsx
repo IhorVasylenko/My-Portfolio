@@ -12,7 +12,8 @@ import reactImage from '../../assets/image/react.png';
 import reduxImage from '../../assets/image/redux.png';
 import sassImage from '../../assets/image/sass.png';
 import yarnImage from '../../assets/image/yarn.png';
-import {Link} from "react-router-dom";
+import {Link} from 'react-router-dom';
+// import myCV from '../../assets/files/Front-End_CV.pdf';
 
 
 export const Main: React.FC<PropsType> = () => {
@@ -42,7 +43,7 @@ export const Main: React.FC<PropsType> = () => {
                     <div className={style.glitch} data-text="Ihor Vasylenko">Ihor Vasylenko</div>
                     <div className={style.text}>Frontend Developer</div>
                     <AnimationForButton >
-                        <Link to='IhorVasylenko.github.io/files/Front-End_CV.pdf' target="_blank" download className={style.link}>
+                        <Link to='files/Front-End_CV.pdf' target="_blank" download className={style.link}>
                             Download CV
                         </Link>
                     </AnimationForButton>
