@@ -5,9 +5,10 @@ import {AnimationCodeTitle} from "../../common/animation/animationCodeTitle/Anim
 import {useMediaQuery} from "@material-ui/core";
 import {Feedback} from "../../common/form/Feedback";
 
+
 export const Contact: React.FC<PropsType> = () => {
 
-    const isSmall = useMediaQuery('(max-width: 575px)');
+    const isSmall = useMediaQuery('(max-width: 990px)');
 
     return (
         <div className={style.contact}>
@@ -50,7 +51,7 @@ export const Contact: React.FC<PropsType> = () => {
                             )}
                         </VisibilitySensor>
                 }
-                <VisibilitySensor partialVisibility={false} offset={{bottom: -700}}>
+                <VisibilitySensor partialVisibility={false} offset={{bottom: -300}}>
                     {({isVisible}) => (
                         <div className={style.wrapperMap}>
                             {isVisible ?

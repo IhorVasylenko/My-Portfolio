@@ -43,7 +43,7 @@ export const AboutMe: React.FC<PropsType> = () => {
                         <a href="https://linkedin.com/in/игорь-василенко-48944811b">
                             <img src={linkedinIcon} alt="linkedinIcon.com"/>
                         </a>
-                        <a href="https://www.instagram.com/theone116355/">
+                        <a href="https://www.codewars.com/users/Ihor_Vasylenko">
                             <img src={codewarsIcon} alt="instagramIcon.com"/>
                         </a>
                         <a href="https://www.facebook.com/igor.vasylenko.965/">

@@ -10,6 +10,7 @@ export const AnimationImage: React.FC<PropsType> = (props) => {
         image,
         status,
         size,
+        url,
     } = props;
 
     const card: RefObject<any> = createRef();
@@ -45,7 +46,11 @@ export const AnimationImage: React.FC<PropsType> = (props) => {
                          ref={cardBg}
                          style={{backgroundImage: `url(${image})`}}/>
                     <div className={style.cardInfo}>
-                        <h3 className={style.cardTitle}>{title}</h3>
+                        <a href={url}>
+                            <h3 className={style.cardTitle}>
+                                {title}
+                            </h3>
+                        </a>
                         <p>{description}</p>
                         <h6>{status}</h6>
                     </div>
@@ -63,4 +68,5 @@ type PropsType = {
     title: string
     description: string
     status: string
+    url: string
 };

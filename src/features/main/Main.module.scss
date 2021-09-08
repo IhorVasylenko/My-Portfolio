@@ -21,8 +21,8 @@
       position: relative;
       width: 45vw;
       height: 45vw;
-      min-width: 300px;
-      min-height: 300px;
+      min-width: 280px;
+      min-height: 280px;
       background-color: #251170;
       display: flex;
       flex-direction: column;
@@ -155,6 +155,23 @@
       }
     }
 
+    .photo {
+      width: 45vw;
+      height: 45vw;
+      min-width: 280px;
+      min-height: 280px;
+      background-color: darkgray;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      & img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
     @media (min-width: 992px) and (max-width: 1199px) {
       .container {
         justify-content: flex-start;
@@ -200,49 +217,13 @@
         }
       }
     }
-    @media (min-width: 576px) and (max-width: 767px) {
-      .container {
-        justify-content: flex-start;
-        align-items: flex-start;
-
-        .glitch {
-          font-size: 30px;
-          margin: 0;
-          padding: 0;
-        }
-
-        .text {
-          font-size: 25px;
-          margin: 0;
-          padding: 0;
-        }
-
-        img {
-          height: 20px;
-          width: auto;
-        }
-      }
-    }
-
-    .photo {
-      width: 45vw;
-      height: 45vw;
-      min-width: 300px;
-      min-height: 300px;
-      background-color: darkgray;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-
-      & img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-      }
-    }
   }
+}
 
-  @media (max-width: 575px) {
+
+@media (max-width: 767px) {
+  .main {
+
     .content {
 
       .container {
@@ -269,8 +250,37 @@
     }
   }
 }
+@media (orientation: landscape) and (max-width: 767px) {
+  .main {
 
+    .content {
+      flex-direction: row;
+      flex-wrap: nowrap;
 
+      .container {
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        .glitch {
+          font-size: 30px;
+          margin: 0;
+          padding: 0;
+        }
+
+        .text {
+          font-size: 25px;
+          margin: 0;
+          padding: 0;
+        }
+
+        img {
+          height: 20px;
+          width: auto;
+        }
+      }
+    }
+  }
+}
 
 
 @keyframes cursor {
@@ -284,13 +294,11 @@
     border-color: #ff00c1;
   }
 }
-
 @keyframes printed_text {
   from {
     width: 0;
   }
 }
-
 @keyframes glitch-skew {
   0% {
     transform: skew(-3deg)
@@ -326,7 +334,6 @@
     transform: skew(5deg)
   }
 }
-
 @keyframes glitch-anim {
   0% {
     clip: rect(85px, 9999px, 45px, 0);
@@ -413,7 +420,6 @@
     transform: skew(.51deg)
   }
 }
-
 @keyframes glitch-anim2 {
   0% {
     clip: rect(55px, 9999px, 29px, 0);
@@ -500,7 +506,6 @@
     transform: skew(.33deg)
   }
 }
-
 @keyframes up {
   0% {
     transform: translateY(0)
@@ -509,7 +514,6 @@
     transform: translateY(-7vh)
   }
 }
-
 @keyframes down {
   0% {
     transform: translateY(0)

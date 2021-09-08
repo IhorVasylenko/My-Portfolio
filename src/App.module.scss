@@ -18,8 +18,12 @@
     top: 0;
     left: 65px;
   }
+}
 
-  @media (max-width: 575px) {
+
+@media (max-width: 990px) {
+  .appContainer {
+
     .hamburgerMenu {
       position: fixed;
       z-index: 9999;

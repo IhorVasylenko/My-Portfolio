@@ -16,7 +16,7 @@ function App() {
 
     const [currentPage, setCurrenPage] = useState(0);
 
-    const isSmall = useMediaQuery('(max-width: 575px)');
+    const isSmall = useMediaQuery('(max-width: 990px)');
 
     const positionsData: MenuPositionType[] = [
         {id: '1', title: 'Home', active: false, path: setCurrenPage, link: 'Main',},

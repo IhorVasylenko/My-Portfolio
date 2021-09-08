@@ -18,7 +18,7 @@ import {useMediaQuery} from "@material-ui/core";
 
 export const Skills: React.FC<PropsType> = () => {
 
-    const isSmall = useMediaQuery('(max-width: 575px)');
+    const isSmall = useMediaQuery('(max-width: 990px)');
 
     return (
         <div className={style.skillsBlock}>
@@ -31,13 +31,7 @@ export const Skills: React.FC<PropsType> = () => {
                     isSmall
                         ? <VisibilitySensor partialVisibility={true} offset={{bottom: 0}}>
                             {({isVisible}) => (
-                                <div style={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    justifyContent: 'center',
-                                    width: '320px',
-                                    height: '180vh'
-                                }}>
+                                <div className={style.isVisibleSmall}>
                                     {
                                         isVisible
                                             ? <div className={style.container}>
@@ -110,7 +104,7 @@ export const Skills: React.FC<PropsType> = () => {
                         </VisibilitySensor>
                         : <VisibilitySensor partialVisibility={true} offset={{bottom: 0}}>
                             {({isVisible}) => (
-                                <div style={{height: 400}}>
+                                <div className={style.isVisibleLarge}>
                                     {
                                         isVisible
                                             ? <div className={style.container}>

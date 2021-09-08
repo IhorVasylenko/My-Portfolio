@@ -10,23 +10,25 @@ import Tasks from '../../assets/image/Tasks.jpeg';
 
 export const Portfolio: React.FC<PropsType> = () => {
 
-    const isSmall = useMediaQuery('(max-width: 575px)');
+    const isSmall = useMediaQuery('(max-width: 991px)');
 
     const projects = [
         {
             id: 1, image: TL, size: 300, title: 'Todo List', status: 'in progress',
             description: 'My project is specifically for the portfolio, it also uses the React library, ' +
-                'as well as Redux and more.', url: 'https://IhorVasylenko.github.io/TodoList',
+                'as well as Redux and more.', urlG: 'https://github.com/IhorVasylenko/TodoList',
+            urlP: 'https://IhorVasylenko.github.io/TodoList',
         },
         {
             id: 2, image: Tasks, size: 300, title: 'Learning Cards', status: 'in progress',
             description: 'My first team development experience.React, Redux, Axios, etc',
-            url: 'https://lismgmk.github.io/My_pet_project/',
+            urlG: 'https://github.com/lismgmk/My_pet_project',
+            urlP: 'https://lismgmk.github.io/My_pet_project/',
         },
         {
             id: 3, image: SN, size: 300, title: 'Social Network', status: 'coming soon',
             description: 'A large project using a large number of technologies from the React library and not only.',
-            url: '/',
+            urlG: 'https://github.com/IhorVasylenko/SocialNtetworkNew', urlP: '',
         },
     ];
 
@@ -37,7 +39,7 @@ export const Portfolio: React.FC<PropsType> = () => {
             </div>
             <div className={style.container}>
                 <div className={style.projects}>
-                    {projects.map(p => <a href={p.url} className={style.hover}>{p.title}</a>)}
+                    {projects.map(p => <a href={p.urlG} className={style.hover}>{p.title}</a>)}
                 </div>
                 <div className={style.content}>
                     <div className={style.wrapper}>
@@ -52,7 +54,8 @@ export const Portfolio: React.FC<PropsType> = () => {
                                             size={p.size}
                                             title={p.title}
                                             status={p.status}
-                                            description={p.description}/>
+                                            description={p.description}
+                                            url={p.urlP}/>
                                     </div>
                                 </div>
                             </div>

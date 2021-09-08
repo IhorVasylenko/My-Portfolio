@@ -13,7 +13,6 @@ import reduxImage from '../../assets/image/redux.png';
 import sassImage from '../../assets/image/sass.png';
 import yarnImage from '../../assets/image/yarn.png';
 import {Link} from 'react-router-dom';
-// import myCV from '../../assets/files/Front-End_CV.pdf';
 
 
 export const Main: React.FC<PropsType> = () => {
